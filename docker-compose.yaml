@@ -40,6 +40,27 @@ services:
       - source_postgres
       - destination_postgres
 
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-postgres:1.47
+    command:
+      [
+        "run",
+        "--profiles-dir",
+        "/root",
+        "--project-dir",
+        "/dbt"
+      ]
+    networks:
+      - elt_network
+    volumes:
+      - ./custom_postgres:/dbt
+      - ~/.dbt:/root
+    depends_on:
+      - elt_script
+    environment:
+      DBT_PROFILE: default
+      DBT_TARGET: dev
+
 networks:
   elt_network:
     # all the containers will recognize this is the network we want it to talk to

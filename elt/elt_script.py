@@ -2,6 +2,9 @@ import subprocess
 import time
 import os
 
+# this is a simple case, postgres to postgres! using different databases across a project (more moving parts) would
+# mean more code in here, matching up schemas, etc.
+
 def wait_for_postgres(host, max_retries=5, delay_seconds=5):
     # waiting for PostgreSQL to be available
     retries = 0

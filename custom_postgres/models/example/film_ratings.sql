@@ -30,4 +30,4 @@ SELECT
     fwr.*,
     fwa.actors
 FROM films_with_ratings fwr 
-LEFT JOIN films_with_actors fwa ON fwr.film_id = fwa.film_id;
+LEFT JOIN films_with_actors fwa ON fwr.film_id = fwa.film_id

@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   source_postgres:
     image: postgres:15
@@ -41,14 +39,15 @@ services:
       - destination_postgres
 
   dbt:
-    image: ghcr.io/dbt-labs/dbt-postgres:1.47
+    image: ghcr.io/dbt-labs/dbt-postgres:1.4.7
     command:
       [
         "run",
         "--profiles-dir",
         "/root",
         "--project-dir",
-        "/dbt"
+        "/dbt",
+        "--full-refresh"
       ]
     networks:
       - elt_network

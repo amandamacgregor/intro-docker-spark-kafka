@@ -37,10 +37,34 @@ destination_config = {
     'dbname': 'destination_db',
     'user': 'postgres',
     'password': 'secret',
-    'host': 'destination_db'
+    'host': 'destination_postgres'
 }
 
 dump_command = [
     'pg_dump',
-    '-h', 
+    '-h', source_config['host'],
+    '-u', source_config['user'],
+    '-d', source_config['dbname'],
+    '-f', 'data_dump.sql',
+    '-w'  
 ]
+
+# this is so we don't have to add the passwork every time
+subprocess_env = dict(PGPASSWORD=source_config['password'])
+
+subprocess.run(dump_command, env=subprocess_env, check=True)
+
+# all that was to set up source. to get everythign from source over to destination:
+load_command = [
+    'psql',
+    '-h', destination_config['host'],
+    '-u', destinationconfig['user'],
+    '-d', destination_config['dbname'],
+    '-a', '-f', 'data_dump.sql',
+]
+
+subprocess_env = dict(PGPASSWORD=destination_config['password'])
+
+subprocess.run(load_command, env=subprocess_env, check=True)
+
+print("Ending ELT Script.")

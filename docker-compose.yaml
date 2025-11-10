@@ -8,9 +8,9 @@ services:
     networks:
       - elt_network
     envitonment:
-      - POSTGRES_DB: source_db
-      - POSTGRES_USER: postgres
-      - POSTGRES_PASSWORD: secret
+      POSTGRES_DB: source_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
     # how we persist data when stopping/starting containers; reference is like local:/docker
     volumes: 
       - ./source_db_init/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -22,15 +22,15 @@ services:
     networks:
       - elt_network
     envitonment:
-      - POSTGRES_DB: destination_db
-      - POSTGRES_USER: postgres
-      - POSTGRES_PASSWORD: secret
+      POSTGRES_DB: destination_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
     # we don't want to persist this data because we won't know if things are working if the data doesn't vanish when we shut this down.
 
   elt_script:
     # we'll be using docker compose but some things are easier to run as-needed, so we're building this section out
     build:
-      context: ./elt_script # root, but in referene to the docker file
+      context: ./elt # root, but in referene to the docker file
       dockerfile: Dockerfile
     command: ["python", "elt_script.py"]
     networks:

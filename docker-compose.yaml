@@ -2,12 +2,12 @@ version: '3'
 
 services:
   source_postgres:
-    image: postgres:latest
+    image: postgres:15
     ports:
       - "5433:5432"
     networks:
       - elt_network
-    envitonment:
+    environment:
       POSTGRES_DB: source_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
@@ -16,12 +16,12 @@ services:
       - ./source_db_init/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   destination_postgres:
-    image: postgres:latest
+    image: postgres:15
     ports:
       - "5434:5432"
     networks:
       - elt_network
-    envitonment:
+    environment:
       POSTGRES_DB: destination_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
@@ -30,9 +30,9 @@ services:
   elt_script:
     # we'll be using docker compose but some things are easier to run as-needed, so we're building this section out
     build:
-      context: ./elt # root, but in referene to the docker file
+      context: ./elt # root, but in reference to the docker file
       dockerfile: Dockerfile
-    command: ["python", "elt_script.py"]
+    command: ['python', 'elt_script.py']
     networks:
       - elt_network
     depends_on:

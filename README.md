@@ -1,5 +1,6 @@
 README  
-# Building another ELT Pipeline (The Accessible Way - coding along and taking 10x longer than the video while I debug my own issues and learn as I go)
+# Building another ELT Pipeline 
+### (The Accessible Way - coding along and taking 10x longer than the video while I debug my own issues and learn as I go)
 Referencing: https://www.youtube.com/watch?v=PHsC_t0j1dU 
 https://transparent-trout-f2f.notion.site/FreeCodeCamp-Data-Engineering-Course-Resources-e9d2b97aed5b4d4a922257d953c4e759
 https://github.com/justinbchau/custom-elt-project
@@ -97,6 +98,7 @@ Each arrow is a dependency. If one fails, the next one doesn't run. This is way 
 **Version pinning is important!** Learned this when I spent 2 hours debugging why Airflow 3.x commands didn't work. Q: in real world projects, are versions pinned? They must be, right?
 
 ### Architecture Overview
+```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                         AIRFLOW ORCHESTRATION                        │
 │                    (Scheduling & Dependency Management)              │
@@ -120,6 +122,7 @@ Each arrow is a dependency. If one fails, the next one doesn't run. This is way 
                                             │  • Business logic     │
                                             │  • Quality tests      │
                                             └───────────────────────┘
+```
 
 ---
 
@@ -138,6 +141,7 @@ actors table:
 film_actors table (the many-to-many junction):
 - film_id, actor_id
 ```
+```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
 │   films     │     │ film_actors  │     │   actors    │
 ├─────────────┤     ├──────────────┤     ├─────────────┤
@@ -148,7 +152,7 @@ film_actors table (the many-to-many junction):
 │ rating      │
 │ user_rating │
 └─────────────┘
-
+```
 Pretty standard database stuff.
 
 ### What We Build

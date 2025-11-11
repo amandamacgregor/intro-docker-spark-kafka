@@ -1,0 +1,94 @@
+./
+├── airflow/
+│   ├── airflow.cfg
+│   ├── dags/
+│   │   ├── __pycache__/
+│   │   │   └── elt_dag.cpython-312.pyc
+│   │   └── elt_dag.py
+│   └── logs/
+│       ├── dag_id=elt_and_dbt/
+│       │   ├── run_id=manual__2025-11-11T18:20:42.298282+00:00/
+│       │   │   └── task_id=run_elt_script/
+│       │   │       └── attempt=1.log
+│       │   ├── run_id=manual__2025-11-11T18:32:00.152747+00:00/
+│       │   │   └── task_id=run_elt_script/
+│       │   │       └── attempt=1.log
+│       │   ├── run_id=manual__2025-11-11T18:45:02.926610+00:00/
+│       │   │   ├── task_id=dbt_run/
+│       │   │   │   └── attempt=1.log
+│       │   │   └── task_id=run_elt_script/
+│       │   │       └── attempt=1.log
+│       │   └── run_id=manual__2025-11-11T18:59:21.859215+00:00/
+│       │       ├── task_id=dbt_run/
+│       │       │   └── attempt=1.log
+│       │       └── task_id=run_elt_script/
+│       │           └── attempt=1.log
+│       ├── dag_processor_manager/
+│       │   └── dag_processor_manager.log
+│       └── scheduler/
+│           ├── 2025-11-11/
+│           │   └── elt_dag.py.log
+│           └── latest -> 2025-11-11/
+├── custom_postgres/
+│   ├── analyses/
+│   ├── dbt_packages/
+│   ├── dbt_project.yml
+│   ├── logs/
+│   │   └── dbt.log
+│   ├── macros/
+│   │   ├── film_ratings_macro.sql
+│   │   └── ratings_macro.sql
+│   ├── models/
+│   │   └── example/
+│   │       ├── actors.sql
+│   │       ├── film_actors.sql
+│   │       ├── film_ratings.sql
+│   │       ├── films.sql
+│   │       ├── schema.yml
+│   │       ├── sources.yml
+│   │       └── specific_movies.sql
+│   ├── README.md
+│   ├── seeds/
+│   ├── snapshots/
+│   ├── target/
+│   │   ├── compiled/
+│   │   │   └── custom_postgres/
+│   │   │       └── models/
+│   │   │           └── example/
+│   │   │               ├── actors.sql
+│   │   │               ├── film_actors.sql
+│   │   │               ├── film_ratings.sql
+│   │   │               ├── films.sql
+│   │   │               ├── specifc_movies.sql
+│   │   │               └── specific_movies.sql
+│   │   ├── graph.gpickle
+│   │   ├── manifest.json
+│   │   ├── partial_parse.msgpack
+│   │   ├── run/
+│   │   │   └── custom_postgres/
+│   │   │       └── models/
+│   │   │           └── example/
+│   │   │               ├── actors.sql
+│   │   │               ├── film_actors.sql
+│   │   │               ├── film_ratings.sql
+│   │   │               ├── films.sql
+│   │   │               ├── specifc_movies.sql
+│   │   │               └── specific_movies.sql
+│   │   └── run_results.json
+│   └── tests/
+├── directory_structure.txt
+├── docker-compose.yaml
+├── Dockerfile
+├── elt/
+│   ├── Dockerfile
+│   └── elt_script.py
+├── elt_script/
+├── logs/
+│   └── dbt.log
+├── postgres_transformations/
+├── README.md
+├── source_db_init/
+│   └── init.sql
+└── start.sh
+
+44 directories, 48 files

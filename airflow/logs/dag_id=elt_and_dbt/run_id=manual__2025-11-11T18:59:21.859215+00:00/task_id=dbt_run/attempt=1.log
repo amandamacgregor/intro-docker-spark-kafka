@@ -1,0 +1,39 @@
+[2025-11-11T18:59:32.600+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-11T18:59:32.640+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: elt_and_dbt.dbt_run manual__2025-11-11T18:59:21.859215+00:00 [queued]>
+[2025-11-11T18:59:32.674+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: elt_and_dbt.dbt_run manual__2025-11-11T18:59:21.859215+00:00 [queued]>
+[2025-11-11T18:59:32.675+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 1
+[2025-11-11T18:59:32.696+0000] {taskinstance.py:2888} INFO - Executing <Task(DockerOperator): dbt_run> on 2025-11-11 18:59:21.859215+00:00
+[2025-11-11T18:59:32.703+0000] {standard_task_runner.py:72} INFO - Started process 64 to run task
+[2025-11-11T18:59:32.707+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'elt_and_dbt', 'dbt_run', 'manual__2025-11-11T18:59:21.859215+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/elt_dag.py', '--cfg-path', '/tmp/tmpj60h1uoc']
+[2025-11-11T18:59:32.711+0000] {standard_task_runner.py:105} INFO - Job 3: Subtask dbt_run
+[2025-11-11T18:59:32.803+0000] {task_command.py:467} INFO - Running <TaskInstance: elt_and_dbt.dbt_run manual__2025-11-11T18:59:21.859215+00:00 [running]> on host 7c9e5faa7d6b
+[2025-11-11T18:59:32.931+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='elt_and_dbt' AIRFLOW_CTX_TASK_ID='dbt_run' AIRFLOW_CTX_EXECUTION_DATE='2025-11-11T18:59:21.859215+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-11T18:59:21.859215+00:00'
+[2025-11-11T18:59:32.933+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-11T18:59:33.078+0000] {docker.py:367} INFO - Starting docker container from image ghcr.io/dbt-labs/dbt-postgres:1.4.7
+[2025-11-11T18:59:33.094+0000] {docker.py:375} WARNING - Using remote engine or docker-in-docker and mounting temporary volume from host is not supported. Falling back to `mount_tmp_dir=False` mode. You can set `mount_tmp_dir` parameter to False to disable mounting and remove the warning
+[2025-11-11T18:59:38.937+0000] {docker.py:438} INFO - [0m18:59:38  Running with dbt=1.4.7
+[2025-11-11T18:59:39.325+0000] {docker.py:438} INFO - [0m18:59:39  Found 5 models, 19 tests, 0 snapshots, 0 analyses, 293 macros, 0 operations, 0 seed files, 3 sources, 0 exposures, 0 metrics
+[2025-11-11T18:59:39.330+0000] {docker.py:438} INFO - [0m18:59:39
+[2025-11-11T18:59:39.606+0000] {docker.py:438} INFO - [0m18:59:39  Concurrency: 1 threads (target='dev')
+[2025-11-11T18:59:39.608+0000] {docker.py:438} INFO - [0m18:59:39
+[2025-11-11T18:59:39.656+0000] {docker.py:438} INFO - [0m18:59:39  1 of 5 START sql table model public.actors ..................................... [RUN]
+[2025-11-11T18:59:39.895+0000] {docker.py:438} INFO - [0m18:59:39  1 of 5 OK created sql table model public.actors ................................ [[32mSELECT 20[0m in 0.24s]
+[2025-11-11T18:59:39.901+0000] {docker.py:438} INFO - [0m18:59:39  2 of 5 START sql table model public.film_actors ................................ [RUN]
+[2025-11-11T18:59:40.011+0000] {docker.py:438} INFO - [0m18:59:40  2 of 5 OK created sql table model public.film_actors ........................... [[32mSELECT 20[0m in 0.11s]
+[2025-11-11T18:59:40.015+0000] {docker.py:438} INFO - [0m18:59:40  3 of 5 START sql table model public.films ...................................... [RUN]
+[2025-11-11T18:59:40.123+0000] {docker.py:438} INFO - [0m18:59:40  3 of 5 OK created sql table model public.films ................................. [[32mSELECT 20[0m in 0.10s]
+[2025-11-11T18:59:40.128+0000] {docker.py:438} INFO - [0m18:59:40  4 of 5 START sql table model public.film_ratings ............................... [RUN]
+[2025-11-11T18:59:40.235+0000] {docker.py:438} INFO - [0m18:59:40  4 of 5 OK created sql table model public.film_ratings .......................... [[32mSELECT 20[0m in 0.10s]
+[2025-11-11T18:59:40.240+0000] {docker.py:438} INFO - [0m18:59:40  5 of 5 START sql table model public.specific_movies ............................ [RUN]
+[2025-11-11T18:59:40.329+0000] {docker.py:438} INFO - [0m18:59:40  5 of 5 OK created sql table model public.specific_movies ....................... [[32mSELECT 1[0m in 0.09s]
+[2025-11-11T18:59:40.371+0000] {docker.py:438} INFO - [0m18:59:40
+[2025-11-11T18:59:40.373+0000] {docker.py:438} INFO - [0m18:59:40  Finished running 5 table models in 0 hours 0 minutes and 1.04 seconds (1.04s).
+[2025-11-11T18:59:40.392+0000] {docker.py:438} INFO - [0m18:59:40
+[2025-11-11T18:59:40.393+0000] {docker.py:438} INFO - [0m18:59:40  [32mCompleted successfully[0m
+[2025-11-11T18:59:40.394+0000] {docker.py:438} INFO - [0m18:59:40
+[2025-11-11T18:59:40.396+0000] {docker.py:438} INFO - [0m18:59:40  Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[2025-11-11T18:59:41.300+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-11T18:59:41.302+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=elt_and_dbt, task_id=dbt_run, run_id=manual__2025-11-11T18:59:21.859215+00:00, execution_date=20251111T185921, start_date=20251111T185932, end_date=20251111T185941
+[2025-11-11T18:59:41.374+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-11T18:59:41.447+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-11T18:59:41.460+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

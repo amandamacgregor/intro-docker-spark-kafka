@@ -98,3 +98,9 @@ http://localhost:8080/
 Can't log in, going back to bash version of command and user creation, pinning apache/airflow:2.10.2 instead of latest since that seems to be the root of the issue.
 
 Had to open from an incognito window, but was able to log in finally.
+
+Had file path issues, got a little ugly but got some code to work and the task finally passed.
+
+dbt_run task now failing:
+dbt can’t find the project
+DockerOperator is trying to mount a temp dir that doesn’t exist on macOS (whaa..?)

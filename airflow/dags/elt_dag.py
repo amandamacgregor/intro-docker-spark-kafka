@@ -56,7 +56,7 @@ t2 = DockerOperator(
     docker_url="unix://var/run/docker.sock",
     network_mode="bridge",
     mounts=[
-        Mount(source='/Users/amandamacgregor/Documents/DE_SkillRefresh/elt_project_1',
+        Mount(source='/Users/amandamacgregor/Documents/DE_SkillRefresh/elt_project_1/custom_postgres',
               target='/dbt', type='bind'),
         Mount(source='/Users/amandamacgregor/.dbt', target='/root', type='bind'),
     ],

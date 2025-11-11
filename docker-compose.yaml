@@ -138,7 +138,11 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
-      - ./elt_script:/opt/airflow/elt_script
+      - ./airflow/logs:/opt/airflow/logs
+      # your actual project layout
+      - ${PWD}/elt:/opt/airflow/elt:ro
+      # extra mount so tutorial path also works, no file moves required
+      - ${PWD}/elt:/opt/airflow/elt_script:ro
       - ./postgres_transformations:/opt/dbt
       - ~/.dbt:/root/.dbt
       - /var/run/docker.sock:/var/run/docker.sock
@@ -146,8 +150,9 @@ services:
       - LOAD_EX=n
       - EXECUTOR=Local
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
-      - AIRFLOW_CONN_DESTINATION_POSTGRES=postgres://postgres:secret@destination_postgres:5434/destination_db
-      - AIRFLOW__CORE__FERNET_KEY=ZsId019_jeppe-J5U0Ig3M7ydQbjgCGsr2ftHq6I-So=
+      - AIRFLOW_CONN_DESTINATION_POSTGRES=postgres://postgres:secret@destination_postgres:5432/destination_db
+      - AIRFLOW__CORE__FERNET_KEY=plIipb9RU3-3wJ1UNaAtqVNJrqFEks1-dGbJM34EW7U=
+      - AIRFLOW__WEBSERVER__SECRET_KEY=supersecretkey
       - AIRFLOW__WEBSERVER__DEFAULT_USER_USERNAME=airflow
       - AIRFLOW__WEBSERVER__DEFAULT_USER_PASSWORD=password
       - AIRFLOW_WWW_USER_USERNAME=airflow
@@ -173,7 +178,11 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
-      - ./elt_script:/opt/airflow/elt_script
+      - ./airflow/logs:/opt/airflow/logs
+      # your actual project layout
+      - ${PWD}/elt:/opt/airflow/elt:ro
+      # extra mount so tutorial path also works, no file moves required
+      - ${PWD}/elt:/opt/airflow/elt_script:ro
       - ./postgres_transformations:/dbt
       - ~/.dbt:/root/.dbt
       - /var/run/docker.sock:/var/run/docker.sock
@@ -181,8 +190,9 @@ services:
       - LOAD_EX=n
       - EXECUTOR=Local
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
-      - AIRFLOW_CONN_DESTINATION_POSTGRES=postgres://postgres:secret@destination_postgres:5434/destination_db
+      - AIRFLOW_CONN_DESTINATION_POSTGRES=postgres://postgres:secret@destination_postgres:5432/destination_db
       - AIRFLOW__CORE__FERNET_KEY=plIipb9RU3-3wJ1UNaAtqVNJrqFEks1-dGbJM34EW7U=
+      - AIRFLOW__WEBSERVER__SECRET_KEY=supersecretkey
       - AIRFLOW__API__SECRET_KEY=secret
       - AIRFLOW_WWW_USER_USERNAME=airflow
       - AIRFLOW_WWW_USER_PASSWORD=password

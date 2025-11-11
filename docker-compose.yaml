@@ -35,8 +35,10 @@ services:
       - elt_network
     depends_on:
       # won't run until these finish initializing, obviously
-      - source_postgres
-      - destination_postgres
+      source_postgres:
+        condition: service_started
+      destination_postgres:
+        condition: service_started
 
   dbt:
     image: ghcr.io/dbt-labs/dbt-postgres:1.4.7
@@ -55,7 +57,8 @@ services:
       - ./custom_postgres:/dbt
       - ~/.dbt:/root
     depends_on:
-      - elt_script
+      elt_script:
+        condition: service_completed_successfully
     environment:
       DBT_PROFILE: default
       DBT_TARGET: dev

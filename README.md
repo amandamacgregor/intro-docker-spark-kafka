@@ -52,3 +52,10 @@ docker exec -it elt_project_1-destination_postgres-1 psql -U postgres
 (6 rows)
 
 docker-compose run dbt
+
+Running into issues where I need way more and more complicated commands for docker to run in sequence
+Adjusting conditions in the docker-compose file to see if it helps
+(it did)
+so, using docker compose down -v
+the docker compose up
+don't need run, getting specific, etc.

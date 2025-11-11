@@ -2,7 +2,7 @@ FROM python:3.8-slim
 
 RUN apt-get update && apt-get install -y postgresql-client cron
 
-# adding cron job code
+# adding cron job code, to run every day at 3am
 
 COPY start.sh /app/start.sh
 COPY elt_script.py .
